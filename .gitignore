@@ -1,0 +1,9 @@
+# created by virtualenv automatically
+
+Lib/site-packages/_distutils_hack/
+
+Lib/site-packages/
+
+Scripts/
+.idea/
+*.cfg
