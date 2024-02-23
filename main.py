@@ -27,7 +27,7 @@ class supermercado:
                     self.subMenu(clienteencontrado["codigo"],clienteencontrado["nit"])
             elif opcion == "4":
                 ccliente=input("Ingrese el codigo del cliente para ver el reporte: ")
-                singelton.referenciaCarrito.mostrar()
+                singelton.referenciaCarrito.buscarFactura(ccliente)
             elif opcion == "5":
                pass
             elif opcion == "6":
