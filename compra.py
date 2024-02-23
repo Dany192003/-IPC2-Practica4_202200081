@@ -1,5 +1,6 @@
 import singelton
 
+
 class Carritocompras:
     def __init__(self):
         self.items = []
@@ -51,16 +52,25 @@ class Carritocompras:
         # Guardar la factura en la lista de facturas
         self.facturas.append(factura_data)
 
-        # Mostrar la factura
-        print(numero_factura)
+        # Mostrar la factura con estilo
+        print("=" * 50)
+        print("Número de Factura:".center(50))
+        print(numero_factura.center(50))
+        print("=" * 50)
         print("Cliente:")
-        print("  Nombre:", nombre_cliente)
-        print("  Correo:", correo_cliente)
-        print("  Nit:", nit_cliente)
+        print(f"  Nombre: {nombre_cliente}")
+        print(f"  Correo: {correo_cliente}")
+        print(f"  Nit: {nit_cliente}")
         print("Productos comprados:")
-        self.mostrarCarrito()
-        print("Total:", total)
-        print("Impuesto (12%):", impuesto)
+        for producto in self.items:
+            print(f"  Nombre: {producto['nombre']}")
+            print(f"  Precio: {producto['precio']}")
+            print(f"  Cantidad: {producto['cantidad']}")
+            print(f"  Subtotal: {producto['subtotal']}")
+        print("=" * 50)
+        print(f"Total: {total}")
+        print(f"Impuesto (12%): {impuesto}")
+        print("=" * 50)
 
         # Vaciar el carrito al terminar la compra
         self.items = []
@@ -69,18 +79,21 @@ class Carritocompras:
         print("Facturas del cliente:")
         for factura in self.facturas:
             if factura['codigo_cliente'] == codigo_cliente:
-                print("Número de Factura:", factura['numero_factura'])
+                print("=" * 50)
+                print("Número de Factura:".center(50))
+                print(factura['numero_factura'].center(50))
+                print("=" * 50)
                 print("Cliente:")
-                print("  Nombre:", factura['cliente']['nombre'])
-                print("  Correo:", factura['cliente']['correo'])
-                print("  Nit:", factura['cliente']['nit'])
+                print(f"  Nombre: {factura['cliente']['nombre']}")
+                print(f"  Correo: {factura['cliente']['correo']}")
+                print(f"  Nit: {factura['cliente']['nit']}")
                 print("Productos comprados:")
                 for producto in factura['productos']:
-                    print("  Nombre:", producto['nombre'])
-                    print("  Precio:", producto['precio'])
-                    print("  Cantidad:", producto['cantidad'])
-                    print("  Subtotal:", producto['subtotal'])
-                    print()
-                print("Total:", factura['total'])
-                print("Impuesto (12%):", factura['impuesto'])
-                print()
+                    print(f"  Nombre: {producto['nombre']}")
+                    print(f"  Precio: {producto['precio']}")
+                    print(f"  Cantidad: {producto['cantidad']}")
+                    print(f"  Subtotal: {producto['subtotal']}")
+                print("=" * 50)
+                print(f"Total: {factura['total']}")
+                print(f"Impuesto (12%): {factura['impuesto']}")
+                print("=" * 50)

@@ -1,3 +1,5 @@
+import time
+from tabulate import tabulate
 import singelton
 class supermercado:
     def __init__(self):
@@ -26,16 +28,16 @@ class supermercado:
                 if clienteencontrado != None:
                     self.subMenu(clienteencontrado["codigo"],clienteencontrado["nit"])
             elif opcion == "4":
-                ccliente=input("Ingrese el codigo del cliente para ver el reporte: ")
+                ccliente=input("Ingrese el NIT del cliente para ver reportes: ")
                 singelton.referenciaCarrito.buscarFactura(ccliente)
             elif opcion == "5":
-               pass
+               self.datosEstudiante()
             elif opcion == "6":
                 singelton.referenciaCliente.mostrar_clientes()
                 singelton.referenciaProducto.mostrar_productos()
             elif opcion == "7":
                 print("Saliendo......")
-                self.tiempoEspera(2)
+                time.sleep(3)
                 print("FUE UN GUSTO SERVIRTE. ¡VUELVE PRONTO!")
                 break
 
@@ -67,5 +69,12 @@ class supermercado:
 
                 break
 
+
+    def datosEstudiante(self):
+        datos = [
+            ["Nombre", "Apellidos", "Carnet","Curso"],
+            ["Edwin Danilo", "Jeronimo Tomas", "202200081","IPC2"]
+        ]
+        print(tabulate(datos, headers="firstrow", tablefmt="fancy_grid"))
 if __name__ == "__main__":
     supermercado()

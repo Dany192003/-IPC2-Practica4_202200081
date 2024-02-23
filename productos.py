@@ -8,12 +8,12 @@ class registroProductos:
         codigo = len(self.productos) + 1
         nombre = input("Nombre del producto: ")
         descripcion = input("Descripción del producto: ")
-        precioUnitario = input("Precio unitario: ")
+        precioUnitario = input("Precio unitario: Q")
         producto = {"codigo": codigo, "nombre": nombre, "descripcion": descripcion, "precioUnitario": precioUnitario}
         self.productos.append(producto)
     def mostrar_productos(self):
         if self.productos:
-            headers = ["Código", "Nombre", "Descripción", "Precio unitario"]
+            headers = ["Código", "Nombre", "Descripción", "Precio unitario Q"]
             rows = [[producto["codigo"], producto["nombre"], producto["descripcion"], producto["precioUnitario"]] for producto in self.productos]
             print("Lista de productos:")
             print(tabulate(rows, headers=headers, tablefmt="grid"))
