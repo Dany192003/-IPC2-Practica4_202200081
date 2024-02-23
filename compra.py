@@ -20,6 +20,10 @@ class Carritocompras:
             print()
 
     def factura(self, codigo):
+        # Calcular el total y el impuesto
+        total = sum(producto['subtotal'] for producto in self.items)
+        impuesto = total * 0.12
+
         # Crear el número de factura
         numero_factura = f"NUMERO DE FACTURA ({self.numero_compra})"
         self.numero_compra += 1  # Incrementar el número de compra
@@ -39,7 +43,9 @@ class Carritocompras:
                 "correo": correo_cliente,
                 "nit": nit_cliente
             },
-            "productos": self.items.copy()  # Copiar la lista de productos para evitar modificaciones posteriores
+            "productos": self.items.copy(),  # Copiar la lista de productos para evitar modificaciones posteriores
+            "total": total,
+            "impuesto": impuesto
         }
 
         # Guardar la factura en la lista de facturas
@@ -53,10 +59,11 @@ class Carritocompras:
         print("  Nit:", nit_cliente)
         print("Productos comprados:")
         self.mostrarCarrito()
+        print("Total:", total)
+        print("Impuesto (12%):", impuesto)
 
         # Vaciar el carrito al terminar la compra
         self.items = []
 
-    def buscarFacturaPorCliente(self, codigo_cliente):
+    def mostrar(self):
         print(self.facturas)
-
