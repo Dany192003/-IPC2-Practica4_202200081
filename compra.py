@@ -1,6 +1,4 @@
 import singelton
-
-
 class Carritocompras:
     def __init__(self):
         self.items = []
